@@ -1,0 +1,18 @@
+[0mOPTIONS /api/contacts [32m204[0m 0.955 ms - 0[0m
+[0mGET /api/contacts [32m200[0m 2.785 ms - 1307[0m
+[0mOPTIONS /api/contacts [32m204[0m 0.986 ms - 0[0m
+[0mGET /api/contacts [32m200[0m 3.826 ms - 1307[0m
+[0mOPTIONS /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [32m204[0m 0.364 ms - 0[0m
+[0mGET /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [32m200[0m 1.153 ms - 114[0m
+[0mOPTIONS /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [32m204[0m 0.085 ms - 0[0m
+[0mDELETE /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [32m200[0m 12.903 ms - 29[0m
+[0mOPTIONS /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [32m204[0m 1.529 ms - 0[0m
+[0mGET /api/contacts/AeHIrLTr6JkxGE6SN-0Rw [33m404[0m 3.741 ms - 23[0m
+::1 - - [25/Sep/2023:09:25:14 +0000] "OPTIONS /api/contacts/AeHIrLTr6JkxGE6SN-0Rw HTTP/1.1" 204 0
+::1 - - [25/Sep/2023:09:25:14 +0000] "GET /api/contacts/AeHIrLTr6JkxGE6SN-0Rw HTTP/1.1" 404 23
+[0mOPTIONS /api/contacts [32m204[0m 0.956 ms - 0[0m
+[0mGET /api/contacts [32m200[0m 3.662 ms - 1192[0m
+[0mOPTIONS /api/contacts [32m204[0m 0.303 ms - 0[0m
+[0mPUT /api/contacts [33m404[0m 10.641 ms - 23[0m
+[0mOPTIONS /api/contacts [32m204[0m 0.156 ms - 0[0m
+[0mPOST /api/contacts [32m201[0m 6.032 ms - 87[0m
