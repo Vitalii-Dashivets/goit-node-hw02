@@ -1,3 +1,3 @@
 import { validateBody } from "./validateBody.js";
-
-export { validateBody };
+import { isValidId } from "./isValidId.js";
+export { validateBody, isValidId };
