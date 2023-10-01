@@ -1,20 +1,15 @@
-import {
-  listContacts,
-  getContactById,
-  removeContact,
-  addContact,
-  updateContact,
-} from "../models/contacts.js";
 import { HttpError, ctrlWrapper } from "../helpers/index.js";
+import { Contact } from "../models/contactModel.js";
+import { updateStatusContact } from "../operations/operations.js";
 
 const getAll = async (req, res, next) => {
-  const result = await listContacts();
+  const result = await Contact.find(req.query);
   res.status(200).json(result);
 };
 
 const getById = async (req, res, next) => {
   const id = req.params.contactId;
-  const result = await getContactById(id);
+  const result = await Contact.findOne({ _id: id });
   if (!result) {
     throw HttpError(404, "Not found");
   }
@@ -22,13 +17,13 @@ const getById = async (req, res, next) => {
 };
 
 const post = async (req, res, next) => {
-  const result = await addContact(req.body);
+  const result = await Contact.create(req.body);
   res.status(201).json(result);
 };
 
 const remove = async (req, res, next) => {
   const { contactId } = req.params;
-  const result = await removeContact(contactId);
+  const result = await Contact.findByIdAndRemove({ _id: contactId });
   if (!result) {
     throw HttpError(404, "Not found");
   }
@@ -37,7 +32,22 @@ const remove = async (req, res, next) => {
 
 const put = async (req, res, next) => {
   const { contactId } = req.params;
-  const result = await updateContact(contactId, req.body);
+  const result = await Contact.findByIdAndUpdate({ _id: contactId }, req.body, {
+    new: true,
+  });
+  if (!result) {
+    throw HttpError(404, "Not found");
+  }
+  res.status(200).json(result);
+};
+
+const patch = async (req, res, next) => {
+  const { favorite } = req.body;
+  const id = req.params.contactId;
+  if (favorite === undefined) {
+    throw HttpError(400, "missing field favorite");
+  }
+  const result = await updateStatusContact(id, req.body);
   if (!result) {
     throw HttpError(404, "Not found");
   }
@@ -49,3 +59,4 @@ export const getByIdContact = ctrlWrapper(getById);
 export const postContact = ctrlWrapper(post);
 export const deleteContact = ctrlWrapper(remove);
 export const putContact = ctrlWrapper(put);
+export const patchFavorite = ctrlWrapper(patch);
