@@ -1,3 +1,4 @@
 import { validateBody } from "./validateBody.js";
 import { isValidId } from "./isValidId.js";
-export { validateBody, isValidId };
+import { isValidToken } from "./isValidToken.js";
+export { validateBody, isValidId, isValidToken };

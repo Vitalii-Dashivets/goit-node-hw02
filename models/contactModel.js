@@ -1,5 +1,8 @@
 import { Schema, model } from "mongoose";
-import { handleMongooseError } from "../helpers/index.js";
+import {
+  handleMongooseError,
+  runValidatorsAtUpdate,
+} from "../helpers/index.js";
 
 const contactSchema = new Schema(
   {
@@ -27,6 +30,10 @@ const contactSchema = new Schema(
 );
 
 contactSchema.post("save", handleMongooseError);
+
+contactSchema.pre("findOneAndUpdate", runValidatorsAtUpdate);
+
+contactSchema.post("findOneAndUpdate", handleMongooseError);
 
 const Contact = model("contact", contactSchema);
 
