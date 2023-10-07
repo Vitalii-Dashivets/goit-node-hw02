@@ -3,7 +3,12 @@ import { Contact } from "../models/contactModel.js";
 import { updateStatusContact } from "../operations/operations.js";
 
 const getAll = async (req, res, next) => {
-  const result = await Contact.find(req.query);
+  const { page, limit, favorite } = req.query;
+  console.log("page=", page);
+  console.log("limit=", limit);
+  const result = await Contact.find({ favorite: favorite })
+    .skip((page - 1) * limit)
+    .limit(limit);
   res.status(200).json(result);
 };
 
