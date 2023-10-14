@@ -7,17 +7,17 @@ const isValidToken = async (req, res, next) => {
   const { SECRET_WORD_JWT } = process.env;
   const [bearer, token] = authorization.split(" ");
   if (bearer !== "Bearer") {
-    next(HttpError(401));
+    return next(HttpError(401));
   }
   try {
     const { id } = jwt.verify(token, SECRET_WORD_JWT);
     const user = await User.findById(id);
-    if (!user) {
-      next(HttpError(401));
+    if (!user || !user.token) {
+      throw HttpError(401);
     }
-    req.body.user = user;
+    req.user = user;
     next();
-  } catch {
+  } catch (error) {
     next(HttpError(401));
   }
 };
