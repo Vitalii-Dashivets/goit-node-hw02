@@ -4,10 +4,11 @@ import { logoutUser } from "./userLogoutCtrl.js";
 import { ctrlWrapper } from "../../helpers/ctrlWrapper.js";
 import { userCurrent } from "./userCurrent.js";
 import { updateUser } from "./updateUser.js";
-
+import { updateUserAvatar } from "./updateAvatar.js";
 const register = ctrlWrapper(registerUser);
 const login = ctrlWrapper(loginUser);
 const logout = ctrlWrapper(logoutUser);
 const current = ctrlWrapper(userCurrent);
 const update = ctrlWrapper(updateUser);
-export { register, login, logout, current, update };
+const updateAvatar = ctrlWrapper(updateUserAvatar);
+export { register, login, logout, current, update, updateAvatar };

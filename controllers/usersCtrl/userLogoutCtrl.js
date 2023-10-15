@@ -16,7 +16,7 @@ const logoutUser = async (req, res, next) => {
     { new: true }
   );
 
-  res.status(204).json("No contact");
+  res.status(204).json("Logout success");
 };
 
 export { logoutUser };
