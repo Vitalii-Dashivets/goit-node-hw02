@@ -14,4 +14,8 @@ const userUpdateJoiSchema = Joi.object({
   subscription: Joi.string(),
   token: Joi.string(),
 });
-export { userJoiSchema, userUpdateJoiSchema };
+
+const emailVerifyJoiSchema = Joi.object({
+  email: Joi.string().pattern(emailRegexp).required(),
+});
+export { userJoiSchema, userUpdateJoiSchema, emailVerifyJoiSchema };
