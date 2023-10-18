@@ -8,8 +8,13 @@ import {
   current,
   update,
   updateAvatar,
+  verifyEmail,
+  resendEmail,
 } from "../../controllers/usersCtrl/index.js";
-import { userUpdateJoiSchema } from "../../schemas/userSchema.js";
+import {
+  userUpdateJoiSchema,
+  emailVerifyJoiSchema,
+} from "../../schemas/userSchema.js";
 
 const authRouter = express.Router();
 
@@ -30,4 +35,7 @@ authRouter.patch(
   updateAvatar
 );
 
+authRouter.get("/verify/:verificationToken", verifyEmail);
+
+authRouter.post("/verify", validateBody(emailVerifyJoiSchema), resendEmail);
 export { authRouter };
